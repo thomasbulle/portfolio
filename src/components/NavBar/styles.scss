@@ -1,0 +1,42 @@
+@import 'config/config.scss';
+
+.nav-bar-wrapper {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-size: 1.5rem;
+
+  .logo-wrapper {
+    margin-left: 5%;
+
+    .logo-nav-bar {
+      width: 70px;
+      height: auto;
+    }
+  }
+
+  .sections-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 50px;
+
+    .section-nav-bar {
+      display: block;
+      margin-left: 25px;
+      padding: 15px 5px;
+      border-bottom: 4px solid transparent;
+      transition: all .5s ease-in-out;
+  
+      &:hover, &:active, &:focus {
+        cursor: pointer;
+        outline: none;
+        color: $redBorderNav;
+        border-bottom: 4px solid $redBorderNav;
+      }
+    }
+  }
+}
