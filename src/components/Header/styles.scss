@@ -96,6 +96,24 @@
   }
 }
 
+@media (max-width: $mobile) {
+  .header-wrapper {
+    .titles-header {
+      width: 80%;
+
+      .name-header {
+        margin: 0;
+        font-size: 3.4rem;
+      }
+
+      .subtitle-header {
+        margin: 35px 0 0 0;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
 @keyframes animateBackground {
   0% {
     opacity: 0;
