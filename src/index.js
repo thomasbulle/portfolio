@@ -5,6 +5,11 @@ import App from 'App';
 import * as serviceWorker from 'serviceWorker';
 import { IntlProvider } from 'react-intl';
 
+// Redux
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import allReducers from 'store/reducers';
+
 import translations_fr from 'translations/translations_fr.json';
 import translations_en from 'translations/translations_en.json';
 
@@ -15,10 +20,18 @@ const messages = {
 
 const language = navigator.language.split('-')[0] || 'en';
 
+/* --- Redux --- */
+const store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+);
+
 ReactDOM.render(
-  <IntlProvider locale={language} messages={messages[language]}>
-    <App />
-  </IntlProvider>,
+  <Provider store={store}>
+    <IntlProvider locale={language} messages={messages[language]}>
+      <App />
+    </IntlProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
