@@ -83,8 +83,9 @@
       border: 4px solid $white;
       transition: all .3s ease-in-out;
 
-      &:focus, &:active, &:hover {
+      &.menu-opened {
         background-color: $redBorderNav;
+        border-color: $redBorderNav;
       }
 
       .icon-small-nav {

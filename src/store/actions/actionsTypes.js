@@ -1,2 +1,3 @@
 // Utils
 export const TOGGLE_MOBILE_MENU = 'TOGGLE_MOBILE_MENU';
+export const SELECT_SECTION     = 'SELECT_SECTION';

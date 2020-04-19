@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import 'index.scss';
 import App from 'App';
 import * as serviceWorker from 'serviceWorker';
-import { IntlProvider } from 'react-intl';
 
 // Redux
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import allReducers from 'store/reducers';
+import thunk from 'redux-thunk';
 
+// Intl
+import { IntlProvider } from 'react-intl';
 import translations_fr from 'translations/translations_fr.json';
 import translations_en from 'translations/translations_en.json';
 
@@ -23,7 +25,10 @@ const language = navigator.language.split('-')[0] || 'en';
 /* --- Redux --- */
 const store = createStore(
   allReducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+  )
 );
 
 ReactDOM.render(

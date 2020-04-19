@@ -12,7 +12,7 @@ class About extends Component {
 
   render() {
     return (
-      <div className="about-wrapper">
+      <div id="about" className="about-wrapper">
         <h2><FormattedMessage id="about.title" /></h2>
 
         <img src="ressources/images/profile-picture.jpg" alt="Profile" className="profile-picture" />

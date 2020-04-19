@@ -1,2 +1,5 @@
 // Utils
-export { toggleMobileMenu } from './utils';
+export {
+  toggleMobileMenu,
+  selectSection,
+} from './utils';

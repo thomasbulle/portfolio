@@ -1,4 +1,7 @@
-import { TOGGLE_MOBILE_MENU } from './actionsTypes';
+import {
+  TOGGLE_MOBILE_MENU,
+  SELECT_SECTION,
+} from './actionsTypes';
 
 /**
  * To open or close the mobile menu
@@ -7,4 +10,15 @@ import { TOGGLE_MOBILE_MENU } from './actionsTypes';
  */
 export const toggleMobileMenu = () => ({
   type: TOGGLE_MOBILE_MENU,
+});
+
+
+/**
+ * To change the selected section in the menu
+ * 
+ * @param {String} section - the selected section
+ */
+export const selectSection = section => ({
+  type: SELECT_SECTION,
+  section,
 });

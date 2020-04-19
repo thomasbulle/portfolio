@@ -1,7 +1,11 @@
-import { TOGGLE_MOBILE_MENU } from 'store/actions/actionsTypes';
+import {
+  TOGGLE_MOBILE_MENU,
+  SELECT_SECTION,
+} from 'store/actions/actionsTypes';
 
 const initialState = {
   isOpenMobileMenu: false,
+  currentSection: null,
 };
 
 const utils = (state = initialState, action) => {
@@ -10,6 +14,12 @@ const utils = (state = initialState, action) => {
       return {
         ...state,
         isOpenMobileMenu: !state.isOpenMobileMenu,
+      }
+
+    case SELECT_SECTION:
+      return {
+        ...state,
+        currentSection: action.section,
       }
 
     default:

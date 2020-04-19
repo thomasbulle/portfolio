@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './styles.scss';
 import { FormattedMessage } from 'react-intl';
 
-// Components
-import NavBar from 'components/NavBar/NavBar';
+// Containers
+import NavBar from 'containers/NavBar/NavBar';
 
 
 class Header extends Component {
@@ -52,7 +52,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="header-wrapper">
+      <header id="header" className="header-wrapper">
         <div className="img-background-container">
           {this.getImgBanner()}
         </div>

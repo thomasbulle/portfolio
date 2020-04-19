@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './styles.scss';
 import { FormattedMessage } from 'react-intl';
 
@@ -9,8 +11,14 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 // Config
 import config from 'config/config';
 
+// Actions
+import { toggleMobileMenu } from 'store/actions';
+
 
 class NavBar extends Component {
+  /**
+   * To change the style of the navbar when scrolling
+   */
   componentDidMount() {
     window.addEventListener('scroll', () => {
       const navBar = document.getElementById('navBar');
@@ -19,10 +27,13 @@ class NavBar extends Component {
       } else if (window.scrollY > 0 && !navBar.className.includes('scrolled')) {
         navBar.className = `${navBar.className} scrolled`;
       }
-    })
+    });
   }
 
+  
   render() {
+    const { dispatch, isOpenMobileMenu } = this.props;
+
     return (
       <nav id="navBar" className="nav-bar-wrapper">
         <div className="large-nav-bar">
@@ -32,15 +43,15 @@ class NavBar extends Component {
 
           <div className="sections-wrapper">
             {config.header.sections.map((section, index) => (
-              <span key={index} className="section-nav-bar">
+              <a key={index} className="section-nav-bar" href={`#${section}`}>
                 <FormattedMessage id={`navBar.${section}`} />
-              </span>
+              </a>
             ))}
           </div>
         </div>
 
         <div className="small-nav-bar">
-          <div className="icon-small-nav-circle">
+          <div className={`icon-small-nav-circle ${isOpenMobileMenu ? 'menu-opened' : ''}`} onClick={() => dispatch(toggleMobileMenu())}>
             <FontAwesomeIcon icon={faBars} className="icon-small-nav" />
           </div>
 
@@ -51,4 +62,14 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+
+NavBar.propTypes = {
+  dispatch: PropTypes.func,
+  isOpenMobileMenu: PropTypes.bool,
+};
+
+const mapStateToProps = ({ utils }) => ({
+  isOpenMobileMenu: utils.isOpenMobileMenu,
+});
+
+export default connect(mapStateToProps)(NavBar);
